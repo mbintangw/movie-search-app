@@ -2,7 +2,7 @@ import React from 'react'
 import {HiHome, HiMagnifyingGlass, HiStar, HiPlayCircle, HiTv, HiPlus} from 'react-icons/hi2'
 import {FaBars, FaTimes} from 'react-icons/fa'
 import { Link } from 'react-scroll'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { RiArrowDownSFill } from "react-icons/ri";
 
 const Navbar = () => {
@@ -16,6 +16,19 @@ const Navbar = () => {
   const [click, setClick] = useState(false)
   const handleclick = () => setClick(!click)
 
+  const searchRef = useRef(null)
+  const handleClickOutside = (event) => {
+    if (searchRef.current && !searchRef.current.contains(event.target)) {
+      setIsSearchVisible(false);
+    }
+  };
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+  
   const content = 
   <>
     <div className='lg:hidden block absolute top-20 mx-auto w-1/2 transition bg-transparent'>
@@ -81,7 +94,7 @@ const Navbar = () => {
           </div>
         </div>
         <div>
-          <div className='flex items-center justify-center relative'>
+          <div className='flex items-center justify-center relative' ref={searchRef}>
             <HiMagnifyingGlass className=' mr-2 text-2xl cursor-pointer' onClick={toggleSearch}/>
             <input type="text" placeholder='Search...' id="seacrh" className={`px-3 py-1 rounded-3xl bg-slate-500/30  text-white outline-none placeholder:text-white/70 transition ease-out  ${isSearchVisible ? '' : 'hidden'}`}></input>
             <img src='https://source.unsplash.com/150x150?face' className='w-8 h-8 rounded-md ml-3'/>
