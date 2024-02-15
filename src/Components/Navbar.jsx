@@ -60,7 +60,7 @@ const Navbar = () => {
   // ${click ? 'bg-secondary' : 'bg-transparent'}
 
   return (
-    <nav className={` w-full fixed backdrop-blur-sm z-10 bg-blue-300`} >
+    <nav className={`w-full fixed backdrop-blur-sm z-10 bg-blue-300`} >
       <div className='h-10vh w-full flex items-center justify-between px-5 py-4 text-white'>
         <div className='flex items-center '>
           <h1 className='font-protest text-4xl'>MoxVie</h1>
@@ -97,7 +97,7 @@ const Navbar = () => {
           <div className='flex items-center justify-center relative' ref={searchRef}>
             <HiMagnifyingGlass className=' mr-2 text-2xl cursor-pointer' onClick={toggleSearch}/>
             <input type="text" placeholder='Search...' id="seacrh" className={`px-3 py-1 rounded-3xl bg-slate-500/30  text-white outline-none placeholder:text-white/70 transition ease-out  ${isSearchVisible ? '' : 'hidden'}`}></input>
-            <img src='https://source.unsplash.com/150x150?face' className='w-8 h-8 rounded-md ml-3'/>
+            <img src='https://source.unsplash.com/150x150?avatar' className='w-8 h-8 rounded-md ml-3'/>
           </div>
         </div>
       </div>
