@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
-import GlobalApi from '../Services/GlobalApi'
+import GlobalApi from '../API/GlobalApi'
 import { HiChevronLeft,HiChevronRight  } from "react-icons/hi";
 
 
 const IMAGE_BASE_URL="https://image.tmdb.org/t/p/original"
 const screenWidth=window.innerWidth
 
-const HeroSection = () => {
+const Banner = () => {
 
   const [movieList, setMovieList] = useState([])
   const elementRef = useRef()
@@ -28,7 +28,7 @@ const HeroSection = () => {
     element.scrollLeft -= screenWidth-110
   }
   return (
-    <div id='HeroSection'>
+    <div id='Banner'>
       
       <HiChevronLeft className='hidden md:block text-6xl text-white absolute mx-8 top-[350px] cursor-pointer' onClick={() => sliderLeft(elementRef.current)}/>
       <HiChevronRight className='hidden md:block text-6xl text-white absolute mx-8 top-[350px]  -right-2 cursor-pointer' onClick={() => sliderRight(elementRef.current)}/>
@@ -45,4 +45,4 @@ const HeroSection = () => {
   )
 }
 
-export default HeroSection
+export default Banner
