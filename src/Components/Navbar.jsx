@@ -1,9 +1,10 @@
 import React from 'react'
 import {HiHome, HiMagnifyingGlass, HiStar, HiPlayCircle, HiTv, HiPlus} from 'react-icons/hi2'
 import {FaBars, FaTimes} from 'react-icons/fa'
-import { Link } from 'react-scroll'
+import { Button, Link } from 'react-scroll'
 import { useState, useRef, useEffect } from 'react'
 import { RiArrowDownSFill } from "react-icons/ri";
+import { useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
 
@@ -28,30 +29,32 @@ const Navbar = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-  
+
+  const navigate = useNavigate();
+  const handleClickSeries = () => {
+    navigate('/Series')
+  }
+
+  const handleClickMovie = () => {
+    navigate('/Movie')
+  }
+  const handleClickHome = () => {
+    navigate('/')
+  }
   const content = 
   <>
-    <div className='lg:hidden block absolute top-20 mx-auto w-1/2 transition bg-transparent'>
+    <div className='lg:hidden block absolute top-[70px] mx-auto w-1/2  bg-black/80 backdrop-blur-3xl transition '>
       <ul className='justify-center text-center space-y-4 md:hidden border'>
-        <li className=' py-3 hover:bg-slate-600'>
-          <Link to='home'
-          spy={true} smooth={true}
-          className='cursor-pointer '>Home</Link>
+        <li className=' py-3 hover:bg-white/20'>
+          <button onClick={handleClickHome} className='cursor-pointer '>Home</button>
         </li>
-        <li className=' py-3 hover:bg-slate-600'>
-          <Link to='home'
-          spy={true} smooth={true}
-          className='cursor-pointer'>Series</Link>
+        <li className=' py-3 hover:bg-white/20'>
+          <button onClick={handleClickSeries}
+          className='cursor-pointer'>Series</button>
         </li>
-        <li className=' py-3 hover:bg-slate-600'>
-          <Link to='home'
-          spy={true} smooth={true}
-          className='cursor-pointer'>Movie</Link>
-        </li>
-        <li className=' py-3 hover:bg-slate-600'>
-          <Link to='home'
-          spy={true} smooth={true}
-          className='cursor-pointer'>Kids</Link>
+        <li className=' py-3 hover:bg-white/20'>
+          <button onClick={handleClickMovie}
+          className='cursor-pointer'>Movie</button>
         </li>
       </ul>
     </div>
@@ -60,7 +63,7 @@ const Navbar = () => {
   // ${click ? 'bg-secondary' : 'bg-transparent'}
 
   return (
-    <nav className={`w-full fixed backdrop-blur-sm z-10 bg-blue-300`} >
+    <nav className={`w-full fixed backdrop-blur-sm z-50 bg-slate-900 `} >
       <div className='h-10vh w-full flex items-center justify-between px-5 py-4 text-white'>
         <div className='flex items-center '>
           <h1 className='font-protest text-4xl'>MoxVie</h1>
@@ -71,24 +74,13 @@ const Navbar = () => {
           <div className='hidden md:flex'>
             <ul className='flex justify-center items-center ml-8'>
               <li className='px-4 font-lato font-bold cursor-pointer hover:text-white/25 hover:scale-90 transition duration-300'>
-                <Link to='home'
-                spy={true} smooth={true}
-                className='cursor-pointer'>Home</Link>
+              <button onClick={handleClickHome} className='cursor-pointer '>Home</button>
               </li>
               <li className='px-4 font-lato font-bold cursor-pointer hover:text-white/25 hover:scale-90 transition duration-300'>
-                <Link to='home'
-                spy={true} smooth={true}
-                className='cursor-pointer'>Series</Link>
+              <button onClick={handleClickSeries} className='cursor-pointer'>Series</button>
               </li>
               <li className='px-4 font-lato font-bold cursor-pointer hover:text-white/25 hover:scale-90 transition duration-300'>
-                <Link to='home'
-                spy={true} smooth={true}
-                className='cursor-pointer'>Movie</Link>
-              </li>
-              <li className='px-4 font-lato font-bold cursor-pointer hover:text-white/25 hover:scale-90 transition duration-300'>
-                <Link to='home'
-                spy={true} smooth={true}
-                className='cursor-pointer'>Kids</Link>
+              <button onClick={handleClickMovie} className='cursor-pointer'>Movie</button>
               </li>
             </ul>
           </div>

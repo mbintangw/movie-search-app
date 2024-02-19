@@ -35,7 +35,7 @@ const Banner = () => {
       <div className='pt-20'>
         <div className='flex overflow-x-auto scrollbar-none scroll-smooth w-full px-16 py-4  cursor-pointer' ref={elementRef}>
           {movieList.map((item) => (
-            <img key={item.id} src={IMAGE_BASE_URL+item.backdrop_path} className='min-w-full md:h-[600px] object-cover object-left-top mr-5 rounded-md transition-all duration-100 ease-in'/>
+            <img key={item.id} src={IMAGE_BASE_URL+item.backdrop_path} className='min-w-full md:h-[600px] object-cover object-left-top mr-5 rounded-md transition-all duration-100 ease-in '/>
           ))}
         </div>
       </div>

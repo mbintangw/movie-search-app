@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react'
-import GlobalApi from '../API/GlobalApi'
+import GlobalApi from '../../API/GlobalApi'
 import MovieCard from './MovieCard'
 import { IoChevronBackOutline, IoChevronForwardOutline } from 'react-icons/io5';
 

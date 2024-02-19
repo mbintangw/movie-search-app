@@ -82,7 +82,7 @@ const GenreMovieList = () => {
   ]
 
   return (
-    <div>
+    <div className=''>
       {genre.map((item,index) => index<=4&&(
         <div className='p-8 px-8 md:px-16 text-white' key={index}>
           <h2 className='text-white text-xl font-bold font-lato' >{item.name}</h2>
