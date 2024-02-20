@@ -25,3 +25,8 @@ export const getSeriesByGenreId = async (id) => {
   const seriesgenre = await axios.get(seriesByGenreBaseURL + "&with_genres=" + id)
   return seriesgenre.data.results
 }
+
+export const searchMovie = async (q) => {
+  const search = await axios.get(movieBaseUrl+"/search/movie?"+ "query="+q+"&api_key="+api_key)
+  return search.data
+}

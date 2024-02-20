@@ -5,6 +5,7 @@ import { Button, Link } from 'react-scroll'
 import { useState, useRef, useEffect } from 'react'
 import { RiArrowDownSFill } from "react-icons/ri";
 import { useNavigate } from 'react-router-dom'
+import { searchMovie } from '../API/GlobalApi'
 
 const Navbar = () => {
 
@@ -17,18 +18,6 @@ const Navbar = () => {
   const [click, setClick] = useState(false)
   const handleclick = () => setClick(!click)
 
-  const searchRef = useRef(null)
-  const handleClickOutside = (event) => {
-    if (searchRef.current && !searchRef.current.contains(event.target)) {
-      setIsSearchVisible(false);
-    }
-  };
-  useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
 
   const navigate = useNavigate();
   const handleClickSeries = () => {
@@ -41,6 +30,7 @@ const Navbar = () => {
   const handleClickHome = () => {
     navigate('/')
   }
+
   const content = 
   <>
     <div className='lg:hidden block absolute top-[70px] mx-auto w-1/2  bg-black/80 backdrop-blur-3xl transition '>
@@ -58,9 +48,14 @@ const Navbar = () => {
         </li>
       </ul>
     </div>
-    
   </>
-  // ${click ? 'bg-secondary' : 'bg-transparent'}
+
+  const search = async (q) => {
+    if (q.length > 3) {
+      const query = await searchMovie(q)
+      console.log({query: query})
+    }
+  }
 
   return (
     <nav className={`w-full fixed backdrop-blur-sm z-50 bg-slate-900 `} >
@@ -86,9 +81,13 @@ const Navbar = () => {
           </div>
         </div>
         <div>
-          <div className='flex items-center justify-center relative' ref={searchRef}>
-            <HiMagnifyingGlass className=' mr-2 text-2xl cursor-pointer' onClick={toggleSearch}/>
-            <input type="text" placeholder='Search...' id="seacrh" className={`px-3 py-1 rounded-3xl bg-slate-500/30  text-white outline-none placeholder:text-white/70 transition ease-out  ${isSearchVisible ? '' : 'hidden'}`}></input>
+          <div className='flex items-center justify-center relative'>
+            <HiMagnifyingGlass className=' mr-2 text-2xl cursor-pointer'/>
+            <input type="text" 
+              placeholder='Search...' 
+              id="seacrh"
+              onChange={({target}) => search(target.value)} 
+              className='px-3 py-1 rounded-3xl bg-slate-500/30  text-white outline-none placeholder:text-white/70 transition ease-out'></input>
             <img src='https://source.unsplash.com/150x150?avatar' className='w-8 h-8 rounded-md ml-3'/>
           </div>
         </div>
