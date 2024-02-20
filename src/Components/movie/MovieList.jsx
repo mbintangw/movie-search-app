@@ -1,25 +1,27 @@
 import React, { useEffect, useState, useRef } from 'react'
-import GlobalApi from '../../API/GlobalApi'
+import { getMovieByGenreId } from '../../API/GlobalApi';
 import MovieCard from './MovieCard'
 import { IoChevronBackOutline, IoChevronForwardOutline } from 'react-icons/io5';
-
-
 
 const MovieList = ({genreId}) => {
   
   const [movieList,setMovieList]= useState([])
-
   const elementRef=useRef();
 
   useEffect(()=>{
-      getMovieByGenreId();
+      getMovieByGenreId(genreId).then((result) => {
+        setMovieList(result)
+      });
   },[])
 
-  const getMovieByGenreId = () => {
-    GlobalApi.getMovieByGenreId(genreId).then(resp => {
-      setMovieList(resp.data.results)
+  const GenreMovieList = () => {
+    return movieList.map((moviegenre, index) => {
+      return (
+        <MovieCard movie={moviegenre} key={index}/>
+      )
     })
   }
+
   const slideRight=(element)=>{
     element.scrollLeft+=500;
   }
@@ -36,9 +38,7 @@ const MovieList = ({genreId}) => {
         mt-[150px]'/>
 
       <div ref={elementRef} className='flex overflow-x-auto gap-8 scrollbar-none scroll-smooth pt-4 px-3 pb-4'>
-        {movieList.map((item,index) => (
-          <MovieCard movie={item} key={index}/>
-        ))}
+        <GenreMovieList/>
       </div>
 
       <IoChevronForwardOutline onClick={()=>slideRight(elementRef.current)}

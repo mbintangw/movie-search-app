@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEffect, useState, useRef } from 'react';
-import GlobalApi from '../../API/GlobalApi';
+import { getSeriesByGenreId } from '../../API/GlobalApi';
 import { IoChevronBackOutline, IoChevronForwardOutline } from 'react-icons/io5';
 import SeriesCard from './SeriesCard';
 
@@ -9,12 +9,16 @@ const SeriesList = ({genreseriesId}) => {
   const elementRef=useRef();
 
   useEffect(()=>{
-    getSeriesByGenreId();
+    getSeriesByGenreId(genreseriesId).then((result) => {
+      setSeriesList(result)
+    });
   },[])
 
-  const getSeriesByGenreId = () => {
-    GlobalApi.getSeriesByGenreId(genreseriesId).then(resp => {
-      setSeriesList(resp.data.results)
+  const SeriesList = () => {
+    return seriesList.map((series,index) => {
+      return (
+        <SeriesCard series={series} key={index}/>
+      )
     })
   }
 
@@ -33,9 +37,7 @@ const SeriesList = ({genreseriesId}) => {
         mt-[150px]'/>
 
       <div ref={elementRef} className='flex overflow-x-auto gap-8 scrollbar-none scroll-smooth pt-4 px-3 pb-4'>
-        {seriesList.map((item,index) => (
-          <SeriesCard series={item} key={index}/>
-        ))}
+        <SeriesList/>
       </div>
 
       <IoChevronForwardOutline onClick={()=>slideRight(elementRef.current)}

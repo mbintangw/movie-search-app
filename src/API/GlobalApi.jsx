@@ -2,20 +2,26 @@ import axios from "axios";
 
 const movieBaseUrl="https://api.themoviedb.org/3";
 const api_key="551d04de72eb98704ee7b6173ee40394";
-
 const movieByGenreBaseURL ="https://api.themoviedb.org/3/discover/movie?api_key=551d04de72eb98704ee7b6173ee40394"
 const seriesByGenreBaseURL ="https://api.themoviedb.org/3/discover/tv?api_key=551d04de72eb98704ee7b6173ee40394"
 
-const getTrandingVideos = axios.get(movieBaseUrl + "/trending/all/day?api_key=" + api_key);
-const getMovieByGenreId=(id) => axios.get(movieByGenreBaseURL + "&with_genres=" + id)
 
-const getTrandingSeries = axios.get(movieBaseUrl + "/trending/tv/day?api_key=" + api_key);
-const getSeriesByGenreId=(id) => axios.get(seriesByGenreBaseURL + "&with_genres=" + id)
+export const getTrandingMovie = async () => {
+  const movie = await axios.get(movieBaseUrl + "/trending/all/day?api_key=" + api_key)
+  return movie.data.results
+}
 
+export const getMovieByGenreId = async (id) => {
+  const moviegenre = await axios.get(movieByGenreBaseURL + "&with_genres=" + id)
+  return moviegenre.data.results
+}
 
-export default {
-  getTrandingVideos,
-  getMovieByGenreId,
-  getTrandingSeries,
-  getSeriesByGenreId,
+export const getTrandingSeries = async () => {
+  const series = await axios.get(movieBaseUrl + "/trending/tv/day?api_key=" + api_key)
+  return series.data.results
+}
+
+export const getSeriesByGenreId = async (id) => {
+  const seriesgenre = await axios.get(seriesByGenreBaseURL + "&with_genres=" + id)
+  return seriesgenre.data.results
 }
