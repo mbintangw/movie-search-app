@@ -51,24 +51,24 @@ const Navbar = () => {
   <>
     <div className='lg:hidden block absolute top-[70px] mx-auto w-1/2  bg-black/80 backdrop-blur-3xl transition '>
       <ul className='justify-center text-center space-y-4 md:hidden border'>
-        <li className=' py-3 hover:bg-white/20'>
-          <button onClick={handleClickHome} className='cursor-pointer '>Home</button>
-        </li>
-        <li className=' py-3 hover:bg-white/20'>
-          <button onClick={handleClickSeries}
-          className='cursor-pointer'>Series</button>
-        </li>
-        <li className=' py-3 hover:bg-white/20'>
-          <button onClick={handleClickMovie}
-          className='cursor-pointer'>Movie</button>
-        </li>
+        <button onClick={handleClickHome} className='cursor-pointer w-full '>
+          <li className=' py-3 hover:bg-white/20 w-full'>Home</li>
+        </button>
+        <button onClick={handleClickSeries}
+          className='cursor-pointer  w-full'>
+            <li className=' py-3 hover:bg-white/20'>Series</li>
+        </button>
+        <button onClick={handleClickMovie}
+          className='cursor-pointer  w-full'>
+            <li className=' py-3 hover:bg-white/20'>Movie</li>
+        </button>
       </ul>
     </div>
   </>
 
   return (
     <nav className={`w-full sticky top-0 backdrop-blur-sm z-50 bg-slate-900 `} >
-      <div className='h-10vh w-full flex items-center justify-between px-10 py-4 text-white' >
+      <div className='h-10vh w-full flex items-center justify-between sm:px-10 px-5 py-4 text-white' >
         <div className='flex items-center '>
           <h1 className='font-protest text-4xl'>MoxVie</h1>
           <button className='flex justify-center items-center px-4 font-lato font-bold cursor-pointer transition duration-300   md:hidden ml-4' onClick={toggleDropdown}>
@@ -91,18 +91,19 @@ const Navbar = () => {
         </div>
         <div>
           <div className='flex items-center justify-center relative'>
-            <HiMagnifyingGlass className=' mr-2 text-2xl cursor-pointer'/>
-            <form onSubmit={handleSearchOnSubmit} className='relative w-max mx-auto'>
-              <input 
-                type="text" 
-                placeholder='Search...' 
-                id="search"
-                ref={searchQuary}
-                className='
-                px-3 py-1 rounded-3xl bg-slate-500/30  text-white outline-none placeholder:text-white/70 transition ease-out'/>
-            </form>
-            
-            <img src='https://source.unsplash.com/150x150?avatar' className='w-8 h-8 rounded-md ml-3'/>
+            <div>
+              <form onSubmit={handleSearchOnSubmit} className='md:relative absolute inset-y-0 right-16 mr-14 md:right-0 '>
+                <input 
+                  type="text" 
+                  placeholder='Search...' 
+                  id="search"
+                  ref={searchQuary}
+                  className='peer cursor-pointer md:relative absolute z-10 w-12 h-12 rounded-full border bg-transparent outline-none text-transparent placeholder-transparent
+                  focus:top-[65px] focus:placeholder:text-white focus:pl-4 focus:w-60 focus:-right-24 focus:cursor-text focus:border-gray-300 focus:text-white focus:bg-black/70 focus:md:w-full focus:md:top-0 focus:md:right-0 focus:md:pl-14 focus:md:bg-transparent '/>
+                  <HiMagnifyingGlass className='absolute inset-y-0 px-3.5 my-auto h-12 w-12 border-r border rounded-full stroke-gray-500 peer-focus:border-gray-300 peer-focus:stroke-gray-500 peer-focus:z-20 peer-focus:border-t-transparent peer-focus:border-l-transparent peer-focus:border-b-transparent peer-focus:rounded-none'/>
+              </form>
+            </div>
+            <img src='https://source.unsplash.com/150x150?avatar' className='w-12 h-12 rounded-md md:-ml-10'/>
           </div>
         </div>
       </div>
@@ -111,3 +112,12 @@ const Navbar = () => {
 }
 
 export default Navbar
+
+{/* <HiMagnifyingGlass className='absolute inset-y-0 my-auto h-8 w-12 border-r border-transparent stroke-gray-500 px-3.5 peer-focus:border-gray-300 peer-focus:stroke-gray-500'/>
+                <input 
+                  type="text" 
+                  placeholder='Search...' 
+                  id="search"
+                  ref={searchQuary}
+                  className='peer cursor-pointer md:relative absolute 
+                   z-10 h-12 w-12 rounded-full border bg-transparent pl-12 outline-none focus:w-full focus:cursor-text focus:border-gray-300 focus:pl-16 focus:pr-4 '/> */}

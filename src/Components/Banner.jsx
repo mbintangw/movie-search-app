@@ -34,9 +34,9 @@ const Banner = () => {
   return (
     <div id='Banner'>
       
-      <HiChevronLeft className='hidden md:block text-6xl text-white absolute mx-8 top-[350px] cursor-pointer' onClick={() => sliderLeft(elementRef.current)}/>
-      <HiChevronRight className='hidden md:block text-6xl text-white absolute mx-8 top-[350px]  -right-2 cursor-pointer' onClick={() => sliderRight(elementRef.current)}/>
-      <div className='pt-20'>
+      <HiChevronLeft className='hidden md:block text-6xl text-white absolute mx-8 top-[450px] -left-4 cursor-pointer' onClick={() => sliderLeft(elementRef.current)}/>
+      <HiChevronRight className='hidden md:block text-6xl text-white absolute mx-8 top-[450px]  -right-3 cursor-pointer' onClick={() => sliderRight(elementRef.current)}/>
+      <div className='md:py-16'>
         <div className='flex overflow-x-auto scrollbar-none scroll-smooth w-full px-16 py-4  cursor-pointer' ref={elementRef}>
           <TrandingMovieList/>
         </div>
