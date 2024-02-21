@@ -4,7 +4,7 @@ import {FaBars, FaTimes} from 'react-icons/fa'
 import { Button, Link } from 'react-scroll'
 import { useState, useRef, useEffect } from 'react'
 import { RiArrowDownSFill } from "react-icons/ri";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { searchMovie } from '../API/GlobalApi'
 
 const Navbar = () => {
@@ -20,6 +20,7 @@ const Navbar = () => {
 
 
   const navigate = useNavigate();
+
   const handleClickSeries = () => {
     navigate('/Series')
   }
@@ -29,6 +30,21 @@ const Navbar = () => {
   }
   const handleClickHome = () => {
     navigate('/')
+  }
+
+  const searchQuary = useRef();
+
+  const handleSearchOnSubmit = (e) => {
+    e.preventDefault();
+    const q = searchQuary.current.value;
+    if (q.length > 3) {
+      navigate({
+        pathname: '/search',
+        search: `?q=${q}`,
+      })
+    } else {
+      alert('Please enter at least 3 characters')
+    }
   }
 
   const content = 
@@ -50,16 +66,9 @@ const Navbar = () => {
     </div>
   </>
 
-  const search = async (q) => {
-    if (q.length > 3) {
-      const query = await searchMovie(q)
-      console.log({query: query})
-    }
-  }
-
   return (
-    <nav className={`w-full fixed backdrop-blur-sm z-50 bg-slate-900 `} >
-      <div className='h-10vh w-full flex items-center justify-between px-5 py-4 text-white'>
+    <nav className={`w-full sticky top-0 backdrop-blur-sm z-50 bg-slate-900 `} >
+      <div className='h-10vh w-full flex items-center justify-between px-10 py-4 text-white' >
         <div className='flex items-center '>
           <h1 className='font-protest text-4xl'>MoxVie</h1>
           <button className='flex justify-center items-center px-4 font-lato font-bold cursor-pointer transition duration-300   md:hidden ml-4' onClick={toggleDropdown}>
@@ -83,11 +92,16 @@ const Navbar = () => {
         <div>
           <div className='flex items-center justify-center relative'>
             <HiMagnifyingGlass className=' mr-2 text-2xl cursor-pointer'/>
-            <input type="text" 
-              placeholder='Search...' 
-              id="seacrh"
-              onChange={({target}) => search(target.value)} 
-              className='px-3 py-1 rounded-3xl bg-slate-500/30  text-white outline-none placeholder:text-white/70 transition ease-out'></input>
+            <form onSubmit={handleSearchOnSubmit} className='relative w-max mx-auto'>
+              <input 
+                type="text" 
+                placeholder='Search...' 
+                id="search"
+                ref={searchQuary}
+                className='
+                px-3 py-1 rounded-3xl bg-slate-500/30  text-white outline-none placeholder:text-white/70 transition ease-out'/>
+            </form>
+            
             <img src='https://source.unsplash.com/150x150?avatar' className='w-8 h-8 rounded-md ml-3'/>
           </div>
         </div>

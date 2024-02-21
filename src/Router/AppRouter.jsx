@@ -4,6 +4,7 @@ import SeriesPage from '../Pages/SeriesPage'
 import HomePage from '../Pages/HomePage'
 import MoviePage from '../Pages/MoviePage'
 import MainLayout from '../Layout/MainLayout'
+import SearchPage from '../Pages/SearchPage'
 
 const Router = () => {
   return (
@@ -15,6 +16,8 @@ const Router = () => {
           path='/Series' element={<MainLayout><SeriesPage/></MainLayout>}/>
         <Route
           path='/Movie' element={<MainLayout><MoviePage/></MainLayout>}/>
+          <Route
+          path='/Search' element={<MainLayout><SearchPage/></MainLayout>}/>
       </Routes>
     </BrowserRouter>
   )
