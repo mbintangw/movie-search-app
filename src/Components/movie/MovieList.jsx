@@ -38,7 +38,13 @@ const MovieList = ({genreId}) => {
         mt-[150px]'/>
 
       <div ref={elementRef} className='flex overflow-x-auto gap-8 scrollbar-none scroll-smooth pt-4 px-3 pb-4'>
-        <GenreMovieList/>
+        {movieList.length>0?<GenreMovieList/>:(
+        <>
+        <div className='min-h-72 min-w-52 rounded-lg bg-gray-500 animate-pulse'></div>
+        <div className='min-h-72 min-w-52 rounded-lg bg-gray-500 animate-pulse'></div>
+        <div className='min-h-72 min-w-52 rounded-lg bg-gray-500 animate-pulse'></div>
+        <div className='min-h-72 min-w-52 rounded-lg bg-gray-500 animate-pulse'></div>
+        </>)}
       </div>
 
       <IoChevronForwardOutline onClick={()=>slideRight(elementRef.current)}

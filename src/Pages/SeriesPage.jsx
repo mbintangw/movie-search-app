@@ -82,42 +82,4 @@ const SeriesPage = () => {
   )
 }
 
-  // const [tvList, setTvList] = useState([])
-  // const elementRef = useRef()
-
-  // useEffect(() => {
-  //   getTrandingSeries()
-  // })
-
-  // const getTrandingSeries = () => {
-  //   GlobalApi.getTrandingSeries.then(resp=>{
-  //     console.log(resp.data.results)
-  //     setTvList(resp.data.results)
-  //   })
-  // }
-  
-  // return (
-  //   <div id='SeriesPage'>
-  //     <div className='
-  //     '>
-  //       {tvList.map((item) => (
-  //         <img key={item.id} 
-  //         src={IMAGE_BASE_URL+item.backdrop_path} 
-  //         className='
-  //         w-28 
-  //         md:w-52 
-  //         rounded-lg 
-  //         hover:border-[3px]
-  //         border-grey-400 
-  //         hover:scale-110 
-  //         transition-all 
-  //         duration-150 
-  //         ease-in 
-  //         cursor-pointer'/>
-  //       ))}
-  //     </div>
-  //   </div>
-  // )
-
-
 export default SeriesPage

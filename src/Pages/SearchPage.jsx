@@ -12,6 +12,7 @@ const SearchPage = () => {
 
   useEffect(() => {
     if (q) {
+      setMovieData();
       searchMovie(q).then((result) => {
         setMovieData(result);
       });
@@ -19,9 +20,19 @@ const SearchPage = () => {
   }, [q, setMovieData]);
 
   return (
-    <div className='flex flex-wrap items-center justify-center mt-10 gap-14'>
-      {movieData?.results?.map((item,index)=> index <= 20 && (
-        <div className='text-black w-[300px] h-[500px] relative group cursor-pointer' key={index}>
+    <div className='flex flex-wrap items-center justify-center mt-10 gap-14' key={q}>
+      {!movieData?.results && <>
+      <div className='min-w-[300px] min-h-[500px] rounded-xl bg-gray-500 animate-pulse'></div>
+      <div className='min-w-[300px] min-h-[500px] rounded-xl bg-gray-500 animate-pulse'></div>
+      <div className='min-w-[300px] min-h-[500px] rounded-xl bg-gray-500 animate-pulse'></div>
+      <div className='min-w-[300px] min-h-[500px] rounded-xl bg-gray-500 animate-pulse'></div>
+      <div className='min-w-[300px] min-h-[500px] rounded-xl bg-gray-500 animate-pulse'></div>
+      <div className='min-w-[300px] min-h-[500px] rounded-xl bg-gray-500 animate-pulse'></div>
+      <div className='min-w-[300px] min-h-[500px] rounded-xl bg-gray-500 animate-pulse'></div>
+      <div className='min-w-[300px] min-h-[500px] rounded-xl bg-gray-500 animate-pulse'></div>
+      </>}
+      {movieData?.results?.map((item,index)=>(
+        <div className='text-black w-[300px] min-h-[500px] relative group cursor-pointer' key={index}>
           <div className='w-full bg-white rounded-xl overflow-clip group-hover:bg-black'>
             <img src={`https://image.tmdb.org/t/p/original`+ item.poster_path}/>
             <h2 className='text-center p-3 font-bold truncate font-lato text-ellipsis'>{item.original_title}

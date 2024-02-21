@@ -31,6 +31,8 @@ const Banner = () => {
   const sliderLeft =(element) => {
     element.scrollLeft -= screenWidth-110
   }
+
+ 
   return (
     <div id='Banner'>
       
@@ -38,8 +40,11 @@ const Banner = () => {
       <HiChevronRight className='hidden md:block text-6xl text-white absolute mx-8 top-[450px]  -right-3 cursor-pointer' onClick={() => sliderRight(elementRef.current)}/>
       <div className='md:py-16'>
         <div className='flex overflow-x-auto scrollbar-none scroll-smooth w-full px-16 py-4  cursor-pointer' ref={elementRef}>
-          <TrandingMovieList/>
+          {movieList.length>0?<TrandingMovieList/>:(<div className='min-w-full md:h-[600px] rounded-md bg-gray-500 animate-pulse'>
+        </div>)}
+          
         </div>
+
       </div>
 
 
