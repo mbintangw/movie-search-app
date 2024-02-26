@@ -1,5 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Protest+Strike&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Protest+Strike&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+.slick-next {
+  z-index: 1;
+}
+
+.slick-prev {
+  z-index: 1;
+}
+
+.slick-dots li button:before {
+  color: white !important;
+  margin-top: 10px;
+}
+
+.slick-dots li.slick-active button:before {
+  color: white !important;
+}

@@ -6,8 +6,9 @@ const MovieCard = ({movie}) => {
     <>
       <img src={IMAGE_BASE_URL+movie.poster_path} alt="Movie Poster" 
       className='
-      w-28 
-      md:w-52 
+      w-full
+      h-full
+      object-cover
       rounded-lg 
       hover:border-[3px]
       border-grey-400 
@@ -17,6 +18,7 @@ const MovieCard = ({movie}) => {
       ease-in 
       cursor-pointer'
       />
+      
       
     </>
   )

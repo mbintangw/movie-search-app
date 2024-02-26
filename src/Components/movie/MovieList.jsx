@@ -17,7 +17,17 @@ const MovieList = ({genreId}) => {
   const GenreMovieList = () => {
     return movieList.map((moviegenre, index) => {
       return (
-        <MovieCard movie={moviegenre} key={index}/>
+        <div className='md:min-h-72 md:min-w-52 text-black group relative cursor-pointer'>
+          <div className='min-h-72 min-w-52'>
+            <MovieCard movie={moviegenre} key={index}/>
+          </div>
+          <div className="flex justify-center items-center absolute top-0  w-full h-full  bg-black-50 text-white opacity-0 group-hover:opacity-100 backdrop-blur-sm transition-all duration-300 text-wrap">
+              <h1 className='text-white font-bold font-lato text-xl text-wrap text-center p-5 '>
+              {moviegenre.title}</h1>
+          </div>
+          
+        </div>
+        
       )
     })
   }
@@ -37,14 +47,17 @@ const MovieList = ({genreId}) => {
         hidden md:block absolute
         mt-[150px]'/>
 
-      <div ref={elementRef} className='flex overflow-x-auto gap-8 scrollbar-none scroll-smooth pt-4 px-3 pb-4'>
-        {movieList.length>0?<GenreMovieList/>:(
+      <div ref={elementRef} className='flex overflow-x-auto gap-8 scrollbar-none scroll-smooth pt-4 px-3 '>
+        {movieList.length>0?
+        <GenreMovieList/>
+        :(
         <>
         <div className='min-h-72 min-w-52 rounded-lg bg-gray-500 animate-pulse'></div>
         <div className='min-h-72 min-w-52 rounded-lg bg-gray-500 animate-pulse'></div>
         <div className='min-h-72 min-w-52 rounded-lg bg-gray-500 animate-pulse'></div>
         <div className='min-h-72 min-w-52 rounded-lg bg-gray-500 animate-pulse'></div>
-        </>)}
+        </>
+        )}
       </div>
 
       <IoChevronForwardOutline onClick={()=>slideRight(elementRef.current)}
