@@ -18,6 +18,24 @@ const Navbar = () => {
   const [click, setClick] = useState(false)
   const handleclick = () => setClick(!click)
 
+  const [isScrolling, setIsScrolling] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      if (scrollPosition > 0) {
+        setIsScrolling(true);
+      } else {
+        setIsScrolling(false);
+      }
+    }
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    }
+  },[]);
+
 
   const navigate = useNavigate();
 
@@ -49,7 +67,7 @@ const Navbar = () => {
 
   const content = 
   <>
-    <div className='lg:hidden block absolute top-[70px] mx-auto w-1/2  bg-black/80 backdrop-blur-3xl transition '>
+    <div className='lg:hidden block absolute top-[70px] mx-auto w-1/2  bg-black/80 backdrop-blur-3xl transition  '>
       <ul className='justify-center text-center space-y-4 md:hidden border'>
         <button onClick={handleClickHome} className='cursor-pointer w-full '>
           <li className=' py-3 hover:bg-white/20 w-full'>Home</li>
@@ -67,7 +85,7 @@ const Navbar = () => {
   </>
 
   return (
-    <nav className={`w-full sticky top-0 backdrop-blur-sm z-50 bg-slate-900 `} >
+    <nav className={`w-full sticky top-0 z-50 ${isScrolling ? 'bg-slate-900' : 'md:bg-transparent'}`} >
       <div className='h-10vh w-full flex items-center justify-between sm:px-10 px-5 py-4 text-white' >
         <div className='flex items-center '>
           <h1 className='font-protest text-4xl'>MoxVie</h1>
@@ -113,11 +131,3 @@ const Navbar = () => {
 
 export default Navbar
 
-{/* <HiMagnifyingGlass className='absolute inset-y-0 my-auto h-8 w-12 border-r border-transparent stroke-gray-500 px-3.5 peer-focus:border-gray-300 peer-focus:stroke-gray-500'/>
-                <input 
-                  type="text" 
-                  placeholder='Search...' 
-                  id="search"
-                  ref={searchQuary}
-                  className='peer cursor-pointer md:relative absolute 
-                   z-10 h-12 w-12 rounded-full border bg-transparent pl-12 outline-none focus:w-full focus:cursor-text focus:border-gray-300 focus:pl-16 focus:pr-4 '/> */}
