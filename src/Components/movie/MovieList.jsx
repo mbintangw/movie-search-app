@@ -3,7 +3,7 @@ import { getMovieByGenreId } from '../../API/GlobalApi';
 import MovieCard from './MovieCard'
 import { IoChevronBackOutline, IoChevronForwardOutline } from 'react-icons/io5';
 
-const MovieList = ({genreId}) => {
+const MovieList = ({genreId,index}) => {
   
   const [movieList,setMovieList]= useState([])
   const elementRef=useRef();
@@ -17,7 +17,7 @@ const MovieList = ({genreId}) => {
   const GenreMovieList = () => {
     return movieList.map((moviegenre, index) => {
       return (
-        <div className='md:min-h-72 md:min-w-52 text-black group relative cursor-pointer'>
+        <div className='md:min-h-72 md:min-w-52 text-black group relative cursor-pointer' key={index}>
           <div className='min-h-72 min-w-52'>
             <MovieCard movie={moviegenre} key={index}/>
           </div>
@@ -40,14 +40,14 @@ const MovieList = ({genreId}) => {
   }
 
   return (
-    <div className='relative'>
+    <div className='relative' key={genreId}>
       <IoChevronBackOutline onClick={()=>slideLeft(elementRef.current)} 
       className='text-[50px] text-white
         p-2 z-10 cursor-pointer 
         hidden md:block absolute
         mt-[150px]'/>
 
-      <div ref={elementRef} className='flex overflow-x-auto gap-8 scrollbar-none scroll-smooth pt-4 px-3 '>
+      <div ref={elementRef} className='flex overflow-x-auto gap-8 scrollbar-none scroll-smooth pt-4 px-3 ' key={index}>
         {movieList.length>0?
         <GenreMovieList/>
         :(

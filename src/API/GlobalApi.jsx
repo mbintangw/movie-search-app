@@ -4,7 +4,7 @@ const movieBaseUrl="https://api.themoviedb.org/3";
 const api_key="551d04de72eb98704ee7b6173ee40394";
 const movieByGenreBaseURL ="https://api.themoviedb.org/3/discover/movie?api_key=551d04de72eb98704ee7b6173ee40394"
 const seriesByGenreBaseURL ="https://api.themoviedb.org/3/discover/tv?api_key=551d04de72eb98704ee7b6173ee40394"
-
+const detailMovieBaseUrl="https://api.themoviedb.org/3/movie/"
 
 export const getTrandingMovie = async () => {
   const movie = await axios.get(movieBaseUrl + "/trending/all/day?api_key=" + api_key)
@@ -29,4 +29,14 @@ export const getSeriesByGenreId = async (id) => {
 export const searchMovie = async (q) => {
   const search = await axios.get(movieBaseUrl+"/search/movie?"+ "query="+q+"&api_key="+api_key)
   return search.data
+}
+
+export const getDetailMovie = async (id) => {
+  const detail = await axios.get(`${movieBaseUrl}/movie/${id}?api_key=${api_key}`)
+  return detail.data
+}
+
+export const getDetailSeries = async (id) => {
+  const detail = await axios.get(`${movieBaseUrl}/tv/${id}?api_key=${api_key}`)
+  return detail.data
 }

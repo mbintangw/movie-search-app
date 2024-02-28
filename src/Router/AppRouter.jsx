@@ -5,6 +5,7 @@ import HomePage from '../Pages/HomePage'
 import MoviePage from '../Pages/MoviePage'
 import MainLayout from '../Layout/MainLayout'
 import SearchPage from '../Pages/SearchPage'
+import DetailPage from '../Pages/DetailPage'
 
 const Router = () => {
   return (
@@ -16,8 +17,11 @@ const Router = () => {
           path='/Series' element={<MainLayout><SeriesPage/></MainLayout>}/>
         <Route
           path='/Movie' element={<MainLayout><MoviePage/></MainLayout>}/>
-          <Route
+        <Route
           path='/Search' element={<MainLayout><SearchPage/></MainLayout>}/>
+        <Route
+          path='/Detail/:id' element={<MainLayout><DetailPage/></MainLayout>}/>
+        
       </Routes>
     </BrowserRouter>
   )

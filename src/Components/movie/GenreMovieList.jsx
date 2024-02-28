@@ -82,11 +82,11 @@ const GenreMovieList = () => {
   ]
 
   return (
-    <div className='lg:-mt-11 mt-11'>
-      {genre.map((item,index) =>(
+    <div className='lg:-mt-11 mt-11' key={genre}>
+      {genre.map((item,index,id) =>(
           <div className='p-8 px-8 md:px-16 text-white' key={index}>
               <h2 className='text-white text-2xl font-bold font-lato' >{item.name}</h2>
-              <MovieList genreId={item.id} key={index} />
+              <MovieList genreId={item.id} key={id}/>
           </div>
       ))}
     </div>
