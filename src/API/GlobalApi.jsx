@@ -40,3 +40,37 @@ export const getDetailSeries = async (id) => {
   const detail = await axios.get(`${movieBaseUrl}/tv/${id}?api_key=${api_key}`)
   return detail.data
 }
+
+export const getDetailMedia = async (id, media_type) => {
+  if (media_type === 'movie') {
+    return await getDetailMovie(id);
+  } else if (media_type === 'tv') {
+    return await getDetailSeries(id);
+  } else {
+    throw new Error('Invalid media type');
+  }
+}
+
+export const getCastsMovie = async (id) => {
+  const cast = await axios.get(`${movieBaseUrl}/movie/${id}/credits?api_key=${api_key}`)
+  return cast.data
+}
+
+export const getCastsSeries = async (id) => {
+  const cast = await axios.get(`${movieBaseUrl}/tv/${id}/credits?api_key=${api_key}`)
+  return cast.data
+}
+
+export const getCastsMedia = async (id, media_type) => {
+  let cast;
+  
+  if (media_type === 'movie') {
+    cast = await axios.get(`${movieBaseUrl}/movie/${id}/credits?api_key=${api_key}`);
+  } else if (media_type === 'tv') {
+    cast = await axios.get(`${movieBaseUrl}/tv/${id}/credits?api_key=${api_key}`);
+  } else {
+    throw new Error('Invalid media type');
+  }
+
+  return cast.data;
+};

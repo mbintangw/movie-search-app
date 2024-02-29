@@ -59,7 +59,7 @@ const Banner = () => {
     <div className='md:-mt-20 '>
       <Slider {...settings}>
         {movieList.map((movie,index,id) => (
-        <Link to={`/Detail/${movie.id}`} key={index}>
+        <Link to={`/Detail/${movie.media_type}/${movie.id}`} key={index}>
           <div key={id} className='relative min-w-full h-full cursor-pointer'>
           <img src={IMAGE_BASE_URL + movie.backdrop_path} alt={movie.title} className='w-full h-full object-cover '/>
           <div className='absolute -bottom-[1px] text-white bg-gradient-to-t  from-black from-20% lg:from-50% pt-20 w-full pl-16 lg:px-10 lg:pb-72 pb-10' key={index}>
@@ -74,8 +74,8 @@ const Banner = () => {
         </Link>
         ))}
       </Slider>
-
     </div>
+    
   )
 
 }

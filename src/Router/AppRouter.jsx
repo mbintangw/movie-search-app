@@ -20,7 +20,7 @@ const Router = () => {
         <Route
           path='/Search' element={<MainLayout><SearchPage/></MainLayout>}/>
         <Route
-          path='/Detail/:id' element={<MainLayout><DetailPage/></MainLayout>}/>
+          path='/Detail/:media_type/:id' element={<MainLayout><DetailPage/></MainLayout>}/>
         
       </Routes>
     </BrowserRouter>
