@@ -18,8 +18,6 @@ const MovieCard = ({movie}) => {
       ease-in 
       cursor-pointer'
       />
-      
-      
     </>
   )
 }

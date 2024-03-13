@@ -51,16 +51,6 @@ export const getDetailMedia = async (id, media_type) => {
   }
 }
 
-export const getCastsMovie = async (id) => {
-  const cast = await axios.get(`${movieBaseUrl}/movie/${id}/credits?api_key=${api_key}`)
-  return cast.data
-}
-
-export const getCastsSeries = async (id) => {
-  const cast = await axios.get(`${movieBaseUrl}/tv/${id}/credits?api_key=${api_key}`)
-  return cast.data
-}
-
 export const getCastsMedia = async (id, media_type) => {
   let cast;
   
@@ -74,3 +64,22 @@ export const getCastsMedia = async (id, media_type) => {
 
   return cast.data;
 };
+
+
+export const getTrailerMedia = async (id, media_type) => {
+  let trailers;
+  
+  if (media_type === 'movie') {
+    const response = await axios.get(`${movieBaseUrl}/movie/${id}/videos?api_key=${api_key}`);
+    trailers = response.data.results.filter(video => video.type === 'Trailer' || video.type === 'Opening Credits');
+  } else if (media_type === 'tv') {
+    const response = await axios.get(`${movieBaseUrl}/tv/${id}/videos?api_key=${api_key}`);
+    trailers = response.data.results.filter(video => video.type === 'Trailer' || video.type === 'Opening Credits');
+  } else {
+    throw new Error('Invalid media type');
+  }
+
+  return trailers;
+}
+
+
