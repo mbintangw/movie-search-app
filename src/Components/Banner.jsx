@@ -1,10 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { getTrandingMovie } from '../API/GlobalApi';
 import { FaRegStar } from "react-icons/fa";
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useNavigate, useSearchParams } from 'react-router-dom'
 import { Link } from 'react-router-dom';
 const IMAGE_BASE_URL="https://image.tmdb.org/t/p/original"
 

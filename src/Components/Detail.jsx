@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom'
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { data } from 'autoprefixer';
 import YouTube from 'react-youtube';
 
 

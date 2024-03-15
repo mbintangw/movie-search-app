@@ -1,11 +1,9 @@
 import React from 'react'
-import {HiHome, HiMagnifyingGlass, HiStar, HiPlayCircle, HiTv, HiPlus} from 'react-icons/hi2'
-import {FaBars, FaTimes} from 'react-icons/fa'
-import { Button, Link } from 'react-scroll'
+import {HiMagnifyingGlass} from 'react-icons/hi2'
 import { useState, useRef, useEffect } from 'react'
 import { RiArrowDownSFill } from "react-icons/ri";
-import { useNavigate, useSearchParams } from 'react-router-dom'
-import { searchMovie } from '../API/GlobalApi'
+import { useNavigate } from 'react-router-dom'
+
 
 const Navbar = () => {
 

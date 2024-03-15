@@ -27,7 +27,7 @@ export const getSeriesByGenreId = async (id) => {
 }
 
 export const searchMovie = async (q) => {
-  const search = await axios.get(movieBaseUrl+"/search/movie?"+ "query="+q+"&api_key="+api_key)
+  const search = await axios.get(movieBaseUrl+"/search/multi?"+ "query="+q+"&api_key="+api_key)
   return search.data
 }
 
