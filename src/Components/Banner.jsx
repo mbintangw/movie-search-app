@@ -55,14 +55,14 @@ const Banner = () => {
   },[]);
 
   return (
-    <div className='md:-mt-20 '>
+    <div className='-mt-20'>
       <Slider {...settings}>
         {movieList.map((movie,index,id) => (
         <Link to={`/Detail/${movie.media_type}/${movie.id}`} key={index} >
-          <div className='relative bg-gradient-to-t from-black from-20% to-white min-h-[400px] md:h-[950px] w-full z-0'>
-          <img src={IMAGE_BASE_URL + movie.backdrop_path} alt={movie.title} className='w-full h-full object-cover absolute mix-blend-multiply'/>
+          <div className='relative bg-gradient-to-t from-black from-30% to-white min-h-[450px] md:h-[950px] w-full -mb-2'>
+          <img src={IMAGE_BASE_URL + movie.backdrop_path} alt={movie.title} className='w-full  h-full object-cover absolute mix-blend-multiply '/>
           </div>
-          <div className='flex flex-col gap-3  md:gap-10 absolute bottom-20   left-10 text-white'>
+          <div className='flex flex-col gap-3 md:gap-10 absolute bottom-20 left-10 text-white'>
             <h1 className='font-bold md:text-3xl text-xl '>{movie.title?movie.title:movie.name}</h1>
             <p className='md:text-xl line-clamp-2 mr-32 '>{movie.overview}</p>
             <div className='flex items-center gap-5  md:gap-10  '>
@@ -80,15 +80,3 @@ const Banner = () => {
 }
 
 export default Banner
-
-{/* <div key={id} className='relative min-w-full h-full cursor-pointer'>
-<img src={IMAGE_BASE_URL + movie.backdrop_path} alt={movie.title} className='w-full h-full object-cover '/>
-<div className='absolute -bottom-[1px] text-white bg-gradient-to-t  from-black from-50% lg:from-50% pt-72 w-full pl-16 lg:px-10 lg:pb- pb-10' key={index}>
-  <h1 className='font-bold md:text-3xl mb-2 text-xl '>{movie.title?movie.title:movie.name}</h1>
-  <p className='md:text-xl line-clamp-2 mr-32 mb-2 md:mb-3'>{movie.overview}</p>
-  <div className='flex items-center gap-5  md:gap-10 absolute lg:bottom-[240px] '>
-    <button className='bg-white text-black px-4 py-2 rounded '>Watch</button>
-    <p className='border px-4 py-2 rounded bg-white text-black flex items-center gap-2'><FaRegStar />{movie.vote_average.toFixed(1)}</p>
-  </div>
-</div>
-</div> */}

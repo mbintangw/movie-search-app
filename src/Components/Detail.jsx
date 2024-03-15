@@ -38,6 +38,10 @@ const Detail = () => {
   const opts = {
     height: '390px',
     width: '100%',
+    playerVars: {
+      // https://developers.google.com/youtube/player_parameters
+      autoplay: 1,
+    },
   };
 
   const settings = {
@@ -146,7 +150,15 @@ const Detail = () => {
               <p className='col-span-2 lg:col-span-1 lg:col-start-2 lg:w-3/4 text-lg md:text-2xl'>{detailMedia.overview}</p>
           </div>
 
-          <div className='mt-10'>
+          <div className='mt-10 md:mt-20 z-10'>
+          {trailer.length > 0 && (
+            <div className='mx-6 md:mx-auto md:w-[640px] md:scale-125'>
+              <YouTube videoId={trailer[0]?.key} opts={opts}/>
+            </div>
+          )}
+          </div>
+
+          <div className='mt-10 md:mt-20 mb-20'>
             <h1 className='text-2xl md:text-4xl font-bold border-b-2 w-24 mx-6 my-6'>Casts</h1>
             <Slider {...settings} >
               {casts.cast.map((cast,index) => (
@@ -162,13 +174,7 @@ const Detail = () => {
             </Slider>
           </div>
 
-          <div className='mt-10 md:mt-20'>
-          {trailer.length > 0 && (
-            <div className='mx-6 md:mx-auto md:w-[640px] md:scale-125'>
-              <YouTube videoId={trailer[0]?.key} opts={opts}/>
-            </div>
-          )}
-          </div>
+
 
         </div>
       )}

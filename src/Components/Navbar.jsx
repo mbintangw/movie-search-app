@@ -17,7 +17,12 @@ const Navbar = () => {
   const handleclick = () => setClick(!click)
 
   const [isScrolling, setIsScrolling] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
 
+  const handleSearchOnClick = () => {
+    setShowSearch(!showSearch);
+  };
+  
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
@@ -65,11 +70,8 @@ const Navbar = () => {
 
   const content = 
   <>
-    <div className='lg:hidden block absolute top-[70px] mx-auto w-1/2  bg-black/80 backdrop-blur-3xl transition  '>
+    <div className='lg:hidden block absolute top-[70px] mx-auto w-1/2  bg-black/80 transition  '>
       <ul className='justify-center text-center space-y-4 md:hidden border'>
-        <button onClick={handleClickHome} className='cursor-pointer w-full '>
-          <li className=' py-3 hover:bg-white/20 w-full'>Home</li>
-        </button>
         <button onClick={handleClickSeries}
           className='cursor-pointer  w-full'>
             <li className=' py-3 hover:bg-white/20'>Series</li>
@@ -83,19 +85,16 @@ const Navbar = () => {
   </>
 
   return (
-    <nav className={`w-full sticky top-0 z-50 ${isScrolling ? 'bg-slate-900' : 'md:bg-transparent'}`} >
-      <div className='h-10vh w-full flex items-center justify-between sm:px-10 px-5 py-4 text-white' >
-        <div className='flex items-center '>
-          <h1 className='font-protest text-4xl'>MoxVie</h1>
+    <nav className={`w-full sticky top-0 z-50 ${isScrolling ? 'bg-black/70  ' : 'bg-transparent'}`} >
+      <div className='h-10vh w-full flex items-center justify-between sm:px-10 px-5 py-4' >
+        <div className='flex items-center text-white'>
+        <button onClick={handleClickHome} className='font-protest text-4xl cursor-pointer '>MoxVie.</button>
           <button className='flex justify-center items-center px-4 font-lato font-bold cursor-pointer transition duration-300   md:hidden ml-4' onClick={toggleDropdown}>
             More <RiArrowDownSFill className='text-2xl'/>
           {isDropdownVisible && content}
           </button>
           <div className='hidden md:flex'>
             <ul className='flex justify-center items-center ml-8'>
-              <li className='px-4 font-lato font-bold cursor-pointer hover:text-white/25 hover:scale-90 transition duration-300'>
-              <button onClick={handleClickHome} className='cursor-pointer '>Home</button>
-              </li>
               <li className='px-4 font-lato font-bold cursor-pointer hover:text-white/25 hover:scale-90 transition duration-300'>
               <button onClick={handleClickSeries} className='cursor-pointer'>Series</button>
               </li>
@@ -105,21 +104,22 @@ const Navbar = () => {
             </ul>
           </div>
         </div>
-        <div>
-          <div className='flex items-center justify-center relative'>
-            <div>
-              <form onSubmit={handleSearchOnSubmit} className='md:relative absolute inset-y-0 right-16 mr-14 md:right-0 '>
-                <input 
-                  type="text" 
-                  placeholder='Search...' 
-                  id="search"
-                  ref={searchQuary}
-                  className='peer cursor-pointer md:relative absolute z-10 w-12 h-12 rounded-full border bg-transparent outline-none text-transparent placeholder-transparent
-                  focus:top-[65px] focus:placeholder:text-white focus:pl-4 focus:w-60 focus:-right-24 focus:cursor-text focus:border-gray-300 focus:text-white focus:bg-black/70 focus:md:w-full focus:md:top-0 focus:md:right-0 focus:md:pl-14 focus:md:bg-transparent '/>
-                  <HiMagnifyingGlass className='absolute inset-y-0 px-3.5 my-auto h-12 w-12 border-r border rounded-full stroke-gray-500 peer-focus:border-gray-300 peer-focus:stroke-gray-500 peer-focus:z-20 peer-focus:border-t-transparent peer-focus:border-l-transparent peer-focus:border-b-transparent peer-focus:rounded-none'/>
-              </form>
-            </div>
-          </div>
+        <div className='mr-10 flex flex-row items-center gap-2'>
+          <button onClick={handleSearchOnClick}>
+            <HiMagnifyingGlass className='text-white text-3xl border rounded-full p-1'/>
+          </button>
+          {showSearch && (
+            <form onSubmit={handleSearchOnSubmit} className=''>
+              <input 
+                type="text" 
+                placeholder='Search...' 
+                id="search"
+                ref={searchQuary}
+                className='bg-transparent border-b-2 placeholder:text-white text-white focus:outline-none w-28 md:w-full'
+                />  
+            </form>
+          )}
+            
         </div>
       </div>
     </nav>
