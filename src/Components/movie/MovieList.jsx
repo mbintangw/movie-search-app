@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import { getMovieByGenreId } from '../../API/GlobalApi';
 import MovieCard from './MovieCard'
 import { IoChevronBackOutline, IoChevronForwardOutline } from 'react-icons/io5';
+import { Link } from 'react-router-dom';
 
 const MovieList = ({genreId,index}) => {
   
@@ -15,17 +16,18 @@ const MovieList = ({genreId,index}) => {
   },[])
 
   const GenreMovieList = () => {
-    return movieList.map((moviegenre, index) => {
+    return movieList.map((moviegenre, index, id) => {
       return (
         <div className='md:min-h-72 md:min-w-52 text-black group relative cursor-pointer' key={index}>
           <div className='min-h-72 min-w-52'>
             <MovieCard movie={moviegenre} key={index}/>
           </div>
-          <div className="flex justify-center items-center absolute top-0  w-full h-full  bg-black-50 text-white opacity-0 group-hover:opacity-100 backdrop-blur-sm transition-all duration-300 text-wrap">
-              <h1 className='text-white font-bold font-lato text-xl text-wrap text-center p-5 '>
-              {moviegenre.title}</h1>
-          </div>
-          
+          <Link to={`/Detail/movie/${moviegenre.id}`} >
+            <div className="flex justify-center items-center absolute top-0  w-full h-full  bg-black-50 text-white opacity-0 group-hover:opacity-100 backdrop-blur-sm transition-all duration-300 text-wrap">
+                <h1 className='text-white font-bold font-lato text-xl text-wrap text-center p-5 '>
+                {moviegenre.title}</h1>
+            </div>
+          </Link>
         </div>
         
       )

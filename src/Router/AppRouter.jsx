@@ -3,25 +3,24 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import SeriesPage from '../Pages/SeriesPage'
 import HomePage from '../Pages/HomePage'
 import MoviePage from '../Pages/MoviePage'
-import MainLayout from '../Layout/MainLayout'
 import SearchPage from '../Pages/SearchPage'
 import DetailPage from '../Pages/DetailPage'
+import Header from '../Layout/Header'
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route
-          path='/' element={<MainLayout><HomePage/></MainLayout>}/>
+          path='/' element={<Header><HomePage/></Header>}/>
         <Route
-          path='/Series' element={<MainLayout><SeriesPage/></MainLayout>}/>
+          path='/Series' element={<Header><SeriesPage/></Header>}/>
         <Route
-          path='/Movie' element={<MainLayout><MoviePage/></MainLayout>}/>
+          path='/Movie' element={<Header><MoviePage/></Header>}/>
         <Route
-          path='/Search' element={<MainLayout><SearchPage/></MainLayout>}/>
+          path='/Search' element={<Header><SearchPage/></Header>}/>
         <Route
-          path='/Detail/:media_type/:id' element={<MainLayout><DetailPage/></MainLayout>}/>
-        
+          path='/Detail/:media_type/:id' element={<Header><DetailPage/></Header>}/>
       </Routes>
     </BrowserRouter>
   )

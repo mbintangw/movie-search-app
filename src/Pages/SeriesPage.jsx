@@ -1,9 +1,11 @@
-import React from 'react'
+import React, {useState} from 'react'
 import SeriesList from '../Components/series/SeriesList'
-
+import { MdKeyboardDoubleArrowDown, MdKeyboardDoubleArrowUp } from "react-icons/md";
 
 const SeriesPage = () => {
-  
+  const [visible, setVisible] = useState(3)
+  const [showLess, setShowLess] = useState(false);
+
   const genreseries = [
     {
       "id": 10759,
@@ -70,14 +72,41 @@ const SeriesPage = () => {
       "name": "Western"
     }
   ]
+
+  const showMoreGenre = () => {
+    setVisible((prevValue) => prevValue + 3);
+    if (visible + 3 >= genreseries.length) {
+      setShowLess(true);
+    } 
+  }
+
+  const showLessGenre = () => {
+    setVisible(3);
+    setShowLess(false);
+  };
+
+
   return (
     <div id='SeriesPage'>
-      {genreseries.map((item,index) => index<=20&&(
+      {genreseries.slice(0,visible).map((item,index,id) => (
         <div className='p-8 px-8 md:px-16 text-white' key={index}>
           <h2 className='text-white text-xl font-bold font-lato' >{item.name}</h2>
-          <SeriesList genreseriesId={item.id} key={index} />
+          <SeriesList genreseriesId={item.id} key={id} />
         </div>
       ))}
+      {showLess ? (
+          <button
+            onClick={showLessGenre}
+            className='text-white text-xl md:text-2xl font-bold font-lato flex justify-center items-center mx-auto gap-5 mb-5 hover:scale-105 transition-all ease-in-out duration-300'>
+            Show Less <MdKeyboardDoubleArrowUp />
+          </button>
+        ) : (
+          <button
+            onClick={showMoreGenre}
+            className='text-white text-xl md:text-2xl font-bold font-lato flex justify-center items-center mx-auto gap-5 mb-5 hover:scale-105 transition-all ease-in-out duration-300'>
+            Show More <MdKeyboardDoubleArrowDown />
+          </button>
+        )}
     </div>
   )
 }

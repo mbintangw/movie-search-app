@@ -3,6 +3,7 @@ import { useEffect, useState, useRef } from 'react';
 import { getSeriesByGenreId } from '../../API/GlobalApi';
 import { IoChevronBackOutline, IoChevronForwardOutline } from 'react-icons/io5';
 import SeriesCard from './SeriesCard';
+import { Link } from 'react-router-dom';
 
 const SeriesList = ({genreseriesId}) => {
   const [seriesList,setSeriesList]=useState([])
@@ -15,9 +16,20 @@ const SeriesList = ({genreseriesId}) => {
   },[])
 
   const SeriesList = () => {
-    return seriesList.map((series,index) => {
+    return seriesList.map((series, index, id) => {
       return (
-        <SeriesCard series={series} key={index}/>
+        <div className='md:min-h-72 md:min-w-52 text-black group relative cursor-pointer' key={index}>
+          <div className='min-h-72 min-w-52'>
+          <SeriesCard series={series} key={index}/>
+          </div>
+          <Link to={`/Detail/tv/${series.id}`} >
+            <div className="flex justify-center items-center absolute top-0  w-full h-full  bg-black-50 text-white opacity-0 group-hover:opacity-100 backdrop-blur-sm transition-all duration-300 text-wrap">
+                <h1 className='text-white font-bold font-lato text-xl text-wrap text-center p-5 '>
+                {series.original_name}</h1>
+            </div>
+          </Link>
+        </div>
+        
       )
     })
   }
@@ -36,7 +48,7 @@ const SeriesList = ({genreseriesId}) => {
         hidden md:block absolute
         mt-[150px]'/>
 
-      <div ref={elementRef} className='flex overflow-x-auto gap-8 scrollbar-none scroll-smooth pt-4 px-3 pb-4'>
+      <div ref={elementRef} className='flex overflow-x-auto gap-8 scrollbar-none scroll-smooth pt-4 px-3 '>
         {seriesList.length>0?<SeriesList/>:(
           <>
           <div className='min-h-72 min-w-52 rounded-lg bg-gray-500 animate-pulse'></div>

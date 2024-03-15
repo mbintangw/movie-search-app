@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from '../Components/Navbar'
 
-const MainLayout = (props) => {
+const Header = (props) => {
   return (
     <div>
       <Navbar />
@@ -10,4 +10,4 @@ const MainLayout = (props) => {
   )
 }
 
-export default MainLayout
+export default Header

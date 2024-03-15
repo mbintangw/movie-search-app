@@ -121,7 +121,6 @@ const Navbar = () => {
                   <HiMagnifyingGlass className='absolute inset-y-0 px-3.5 my-auto h-12 w-12 border-r border rounded-full stroke-gray-500 peer-focus:border-gray-300 peer-focus:stroke-gray-500 peer-focus:z-20 peer-focus:border-t-transparent peer-focus:border-l-transparent peer-focus:border-b-transparent peer-focus:rounded-none'/>
               </form>
             </div>
-            <img src='https://source.unsplash.com/150x150?avatar' className='w-12 h-12 rounded-md md:-ml-10'/>
           </div>
         </div>
       </div>
