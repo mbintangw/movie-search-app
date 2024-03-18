@@ -10,15 +10,31 @@ const SearchPage = () => {
   const q = searchParams.get("q");
 
   const [movieData, setMovieData] = useState();
+  const [notFound, setNotFound] = useState(false);
 
   useEffect(() => {
     if (q) {
-      setMovieData();
+      setMovieData(null); // Set nilai movieData menjadi null sebelum melakukan pencarian
       searchMovie(q).then((result) => {
-        setMovieData(result);
+        if (result?.results?.length > 0) {
+          setMovieData(result);
+          setNotFound(false); // Data ditemukan, set NotFound menjadi false
+        } else {
+          setNotFound(true); // Data tidak ditemukan, set NotFound menjadi true
+        }
       });
     }
   }, [q, setMovieData]);
+
+  if (notFound) {
+    return (
+      <div className="text-center mt-10 text-white">
+        <h1 className="text-3xl font-bold mb-4">Not Found <span className='text-red-500'>{q}</span></h1>
+        <p className="text-lg">Sorry, currently <span className='text-red-500'>{q}</span> Movie or TV Series is not available.</p>
+        <p className="text-lg">please check the word again if it is correct</p>
+      </div>
+    );
+  }
 
   return (
     <div className='flex flex-wrap items-center justify-center mt-10 gap-14' key={q}>

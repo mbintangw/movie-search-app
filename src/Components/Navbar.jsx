@@ -65,7 +65,7 @@ const Navbar = () => {
     setShowSearch(false);
 
     
-    if (q.length > 3) {
+    if (q.length > 2) {
       navigate({
         pathname: '/search',
         search: `?q=${q}`,
