@@ -153,7 +153,7 @@ const Detail = () => {
           <div className='grid mx-6 lg:mx-14 gap-3 md:gap-10 text-white z-10'>
               <img src={`https://image.tmdb.org/t/p/original`+ detailMedia.poster_path} 
                 alt={detailMedia.title} 
-                className='row-span-2 lg:row-span-4 min-w-32 h-full md:w-80 rounded-lg  '/>
+                className='row-span-2 lg:row-span-4 w-48 h-full md:w-80 rounded-lg  '/>
               <h1 className='text-xl md:text-4xl font-bold lg:mt-10 ml-2'>{detailMedia.title?detailMedia.title:detailMedia.name}</h1>
               <ul className='flex flex-col gap-3 lg:flex-row text-center lg:items-center  lg:-mt-0 ml-2 md:w-2/3'>
                 {detailMedia.genres.map(genre => (

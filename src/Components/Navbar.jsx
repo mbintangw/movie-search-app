@@ -121,6 +121,7 @@ const Navbar = () => {
                   type="text" 
                   placeholder='Search...' 
                   id="search"
+                  data-netlify="true"
                   ref={searchQuary}
                   className='bg-transparent border-b-2 placeholder:text-white text-white focus:outline-none w-full md:w-28'
                 />  
