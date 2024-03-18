@@ -62,7 +62,7 @@ const Banner = () => {
           <div className='relative bg-gradient-to-t from-black from-30% to-white min-h-[450px] md:h-[950px] w-full -mb-2'>
           <img src={IMAGE_BASE_URL + movie.backdrop_path} alt={movie.title} className='w-full  h-full object-cover absolute mix-blend-multiply '/>
           </div>
-          <div className='flex flex-col gap-3 md:gap-10 absolute bottom-20 left-10 text-white'>
+          <div className='flex flex-col gap-3 md:gap-10 absolute bottom-20 md:bottom-44 left-10 text-white'>
             <h1 className='font-bold md:text-3xl text-xl '>{movie.title?movie.title:movie.name}</h1>
             <p className='md:text-xl line-clamp-2 mr-32 '>{movie.overview}</p>
             <div className='flex items-center gap-5  md:gap-10  '>

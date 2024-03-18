@@ -21,6 +21,9 @@ const Navbar = () => {
 
   const handleSearchOnClick = () => {
     setShowSearch(!showSearch);
+    if (showSearch) {
+      searchQuary.current.value = ''; 
+    }
   };
   
   useEffect(() => {
@@ -58,6 +61,10 @@ const Navbar = () => {
   const handleSearchOnSubmit = (e) => {
     e.preventDefault();
     const q = searchQuary.current.value;
+    searchQuary.current.value = '';
+    setShowSearch(false);
+
+    
     if (q.length > 3) {
       navigate({
         pathname: '/search',
@@ -105,21 +112,20 @@ const Navbar = () => {
           </div>
         </div>
         <div className='mr-10 flex flex-row items-center gap-2'>
-          <button onClick={handleSearchOnClick}>
-            <HiMagnifyingGlass className='text-white text-3xl border rounded-full p-1'/>
-          </button>
-          {showSearch && (
-            <form onSubmit={handleSearchOnSubmit} className=''>
-              <input 
-                type="text" 
-                placeholder='Search...' 
-                id="search"
-                ref={searchQuary}
-                className='bg-transparent border-b-2 placeholder:text-white text-white focus:outline-none w-28 md:w-full'
+            <button onClick={handleSearchOnClick}>
+              <HiMagnifyingGlass className='text-white text-3xl border rounded-full p-1'/>
+            </button>
+            {showSearch && (
+              <form onSubmit={handleSearchOnSubmit} className='flex flex-col items-center md:flex-row md:items-center'>
+                <input 
+                  type="text" 
+                  placeholder='Search...' 
+                  id="search"
+                  ref={searchQuary}
+                  className='bg-transparent border-b-2 placeholder:text-white text-white focus:outline-none w-full md:w-28'
                 />  
-            </form>
-          )}
-            
+              </form>
+            )}
         </div>
       </div>
     </nav>

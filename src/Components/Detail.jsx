@@ -132,6 +132,19 @@ const Detail = () => {
 
   return (
     <div>
+      {!detailMedia && (
+        <>
+          <div className=' min-w-full h-[384px] mb-20 rounded-lg bg-gray-500 animate-pulse '></div>
+          <div className='flex flex-row gap-10 mx-14'> 
+            <div className='w-80 h-[480px] rounded-lg bg-gray-500 animate-pulse '></div>
+            <div className='flex flex-col gap-10 '>
+              <div className='w-[500px] h-[80px] rounded-lg bg-gray-500 animate-pulse '></div>
+              <div className='w-[500px] h-[80px] rounded-lg bg-gray-500 animate-pulse '></div>
+              <div className='w-[500px] h-[80px] rounded-lg bg-gray-500 animate-pulse '></div>
+            </div>
+          </div>
+        </>
+      )}
       {detailMedia && (
         <div className='text-white'>
           <div className='relative bg-gradient-to-t from-black to-white h-96 w-full z-0'>
@@ -140,9 +153,9 @@ const Detail = () => {
           <div className='grid mx-6 lg:mx-14 gap-3 md:gap-10 text-white z-10'>
               <img src={`https://image.tmdb.org/t/p/original`+ detailMedia.poster_path} 
                 alt={detailMedia.title} 
-                className='row-span-2 lg:row-span-4 sm:w-80 w-full rounded-lg  '/>
-              <h1 className='text-2xl md:text-4xl font-bold lg:mt-10'>{detailMedia.title?detailMedia.title:detailMedia.name}</h1>
-              <ul className='flex flex-col gap-3 lg:flex-row text-center lg:items-center -mt-10 lg:-mt-0 ml-2 md:w-2/3'>
+                className='row-span-2 lg:row-span-4 min-w-32 h-full md:w-80 rounded-lg  '/>
+              <h1 className='text-xl md:text-4xl font-bold lg:mt-10 ml-2'>{detailMedia.title?detailMedia.title:detailMedia.name}</h1>
+              <ul className='flex flex-col gap-3 lg:flex-row text-center lg:items-center  lg:-mt-0 ml-2 md:w-2/3'>
                 {detailMedia.genres.map(genre => (
                     <li key={genre.id} className='border bg-white text-black font-bold rounded-lg px-2 w-2/3 py-1 lg:py-2'>{genre.name}</li>
                   ))}
@@ -161,12 +174,14 @@ const Detail = () => {
           <div className='mt-10 md:mt-20 mb-20'>
             <h1 className='text-2xl md:text-4xl font-bold border-b-2 w-24 mx-6 my-6'>Casts</h1>
             <Slider {...settings} >
-              {casts.cast.map((cast,index) => (
+              {casts?.cast?.map((cast,index) => (
                   <div key={index} className='px-2'>
-                      <img src={`https://image.tmdb.org/t/p/original`+ cast.profile_path} 
-                      alt={cast.name}
-                      className='w-full h-full object-cover rounded-lg cursor-pointer'
-                      />
+                      {cast.profile_path !== null && (
+                        <img src={`https://image.tmdb.org/t/p/original` + cast.profile_path} 
+                            alt={cast.name}
+                            className='w-full h-full object-cover rounded-lg cursor-pointer'
+                        />
+                      )}
                       <h1 className='text-white my-2 font-lato text-lg font-bold'>{cast.name}</h1>
                       <h2 className='text-gray-500'>{cast.character}</h2>
                   </div>

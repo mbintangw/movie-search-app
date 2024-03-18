@@ -35,7 +35,7 @@ const SearchPage = () => {
       {movieData?.results?.map((item,index)=>(
         <div className='text-black w-[300px] min-h-[500px] relative group cursor-pointer ' key={index}>
           <div className='w-full bg-white rounded-xl overflow-clip group-hover:bg-black'>
-            <img src={`https://image.tmdb.org/t/p/original`+ item.poster_path}/>
+            <img src={`https://image.tmdb.org/t/p/original`+ item.poster_path} alt={item.original_title?item.original_title:item.original_name}/>
             <h2 className='text-center p-3 font-bold truncate font-lato text-ellipsis'>{item.original_title?item.original_title:item.original_name}
             </h2>
           </div>

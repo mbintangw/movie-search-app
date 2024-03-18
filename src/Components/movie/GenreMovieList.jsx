@@ -109,14 +109,14 @@ const GenreMovieList = () => {
       {showLess ? (
           <button
             onClick={showLessGenre}
-            className='text-white text-xl md:text-2xl font-bold font-lato flex justify-center items-center mx-auto gap-5 mb-5 hover:scale-105 transition-all ease-in-out duration-300'>
+            className='text-white text-xl md:text-2xl font-bold font-lato flex justify-center items-center mx-auto gap-5 mb-5 hover:scale-105 transition-all ease-in-out duration-300 animate-bounce'>
             Show Less <MdKeyboardDoubleArrowUp />
           </button>
         ) : (
           <button
             onClick={showMoreGenre}
-            className='text-white text-xl md:text-2xl font-bold font-lato flex justify-center items-center mx-auto gap-5 mb-5 hover:scale-105 transition-all ease-in-out duration-300'>
-            Show More <MdKeyboardDoubleArrowDown />
+            className='text-white text-xl md:text-2xl font-bold font-lato flex justify-center items-center mx-auto gap-5 mb-5 hover:scale-105 transition-all ease-in-out duration-300 animate-bounce'>
+            Show More <MdKeyboardDoubleArrowDown/>
           </button>
         )}
     </div>
